@@ -22,8 +22,7 @@ export default createGlobalStyle`
 
     width: 42.8rem;
 
-    /* overflow-x: hidden; */
-    /* overflow-y: auto; */
+    overflow: hidden;
     scroll-behavior: smooth;
   }
 
