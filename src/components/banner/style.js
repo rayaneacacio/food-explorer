@@ -11,8 +11,6 @@ export const Container = styled.div`
 
   border-radius: 0.2917rem;
 
-  /* animation: animationGradient 5s infinite; */
-
   > img {
     width: 19.1rem;
     height: 14.9rem;
@@ -41,13 +39,4 @@ export const Container = styled.div`
       width: 20.2rem;
     }
   }
-
-  /* @keyframes animationGradient {
-    0% {
-      background-position-y: 0%;
-    }
-    100% {
-      background-position-y: 100%;
-    } */
-  /* } */
 `;
