@@ -19,7 +19,7 @@ export function SignIn() {
 
       <main>
         <Input title="Email" placeholder="Exemplo: exemplo@exemplo.com.br" />
-        <Input title="Senha" placeholder="No mínimo 6 caracteres" />
+        <Input type="password" title="Senha" placeholder="No mínimo 6 caracteres" />
         
         <Button title="Entrar" $buttonWithBackground />
         <Button title="Criar uma conta" onClick={ navigateToRegister } />
