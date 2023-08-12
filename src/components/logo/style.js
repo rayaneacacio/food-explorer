@@ -21,6 +21,19 @@ export const Container = styled.div`
     animation: ${({ $logoAuthPage }) => $logoAuthPage && "first 1s forwards"};
   }
 
+  > div {
+    color: ${({ theme }) => theme.COLORS.BLUE};
+    font-size: 1.2rem;
+    font-weight: 400;
+
+    width: 3.4rem;
+    height: 1.9rem;
+
+    margin-top: 0.3rem;
+
+    display: ${({ $logoAuthPage, $footerLogo }) => ($logoAuthPage || $footerLogo) && "none"};
+  }
+
   @keyframes first {
     to {
       opacity: 1;
