@@ -1,15 +1,22 @@
 import { Container } from "./style";
 
-export function Input({ icon, title, placeholder, ...rest }) {
+export function Input({ icon, title, placeholder, $textarea, $saveOrEditFood, ...rest }) {
   return (
-    <Container>
+    <Container $saveOrEditFood={ $saveOrEditFood }>
       { title }
       <div>
         {
           icon &&
           <span> { icon } </span>
         }
-        <input type="text" placeholder={ placeholder } {...rest} />
+
+        {
+          $textarea ?
+          <textarea name="" placeholder={ placeholder } id="" cols="30" rows="10"></textarea>
+          :
+          <input type="text" placeholder={ placeholder } {...rest} />
+        }
+        
       </div>
     </Container>
   )
