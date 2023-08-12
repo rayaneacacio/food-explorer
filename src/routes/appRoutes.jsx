@@ -1,15 +1,29 @@
 import { Routes, Route } from "react-router-dom";
 
+import { useAdmin } from "../hooks/isAdmin";
+
 import { Home } from "../pages/Home";
 import { Menu } from "../pages/Menu";
 import { Food } from "../pages/Food";
+import { NewFood } from "../pages/NewFood";
+import { EditFood } from "../pages/EditFood";
 
 export function AppRoutes() {
+  const { isAdmin } = useAdmin();
+
   return (
     <Routes>
       <Route path="/" element={ <Home /> } />
       <Route path="/menu" element={ <Menu /> } />
       <Route path="/food" element={ <Food /> } />
+      {
+        isAdmin &&
+        <Route path="/new-food" element={ <NewFood /> } /> 
+      }
+      {
+        isAdmin &&
+        <Route path="/edit-food" element={ <EditFood /> } /> 
+      }
     </Routes>
   )
 }
