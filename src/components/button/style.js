@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.button`
-  background: ${({ theme, $buttonWithBackground }) => $buttonWithBackground ? theme.COLORS.RED : "none"};
-
+  background: ${({ theme, $buttonWithBackground, $buttonSave, $buttonRemove }) => 
+  $buttonWithBackground ? theme.COLORS.RED : ($buttonSave ? theme.COLORS.RED_02 : ($buttonRemove ? theme.COLORS.BACKGROUND_333 : "none"))};
+  
   width: 100%;
   height: 4.8rem;
 
