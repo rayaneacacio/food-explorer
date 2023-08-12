@@ -1,12 +1,17 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  height: 91.8rem;
+  overflow-y: auto;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  overflow-y: auto;
+  &::-webkit-scrollbar {
+    background: transparent;
+  }
 `;
 
 export const Main = styled.div`
