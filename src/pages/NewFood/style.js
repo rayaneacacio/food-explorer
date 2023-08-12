@@ -1,7 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  height: 116.8rem;
   overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    background: transparent;
+  }
 `;
 
 export const Main = styled.main`

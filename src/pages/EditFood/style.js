@@ -1,14 +1,17 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  height: 116.8rem;
   overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    background: transparent;
+  }
 `;
 
 export const Main = styled.main`
   width: 36.4rem;
   margin: 12.492rem 0 5.3rem 3.2rem;
-
-  overflow-y: auto;
 
   h1 {
     font-family: ${({ theme }) => theme.FONTS.BUTTONS};
