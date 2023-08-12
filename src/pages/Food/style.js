@@ -10,20 +10,6 @@ export const Container = styled.div`
 export const Main = styled.div`
   margin-top: 15rem;
 
-  > button {
-    background: none;
-    color: ${({ theme }) => theme.COLORS.WHITE_25};
-    font-size: 2.4rem;
-
-    display: flex;
-    align-items: center;
-
-    :first-child {
-      width: 3.2rem;
-      height: 3.2rem;
-    }
-  }
-
   > img {
     width: 26.4rem;
     height: 26.4rem;
@@ -56,6 +42,10 @@ export const Main = styled.div`
       flex-wrap: wrap;
       gap: 2.4rem;
     }
+  }
+
+  .buttonEdit {
+    margin-bottom: 4.943rem;
   }
 
   .values {
