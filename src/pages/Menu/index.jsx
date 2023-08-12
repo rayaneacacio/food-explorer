@@ -1,3 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
+import { useAdmin } from "../../hooks/isAdmin";
+
 import { GoSearch } from "react-icons/go";
 
 import { Header } from "../../components/header";
@@ -8,7 +12,13 @@ import { Footer } from "../../components/footer";
 import { Container } from "./style";
 
 export function Menu() {
-  const isAdmin = false;
+  const { isAdmin } = useAdmin();
+
+  const navigate = useNavigate();
+
+  function navigateToNewFood() {
+    navigate("/new-food");
+  }
 
   return (
     <Container>
@@ -20,7 +30,7 @@ export function Menu() {
 
           {
             isAdmin &&
-            <Section title="Novo Prato" />
+            <Section title="Novo Prato" onClick={ navigateToNewFood } />
           }
 
           <Section title="Sair" />
