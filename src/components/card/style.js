@@ -6,6 +6,8 @@ export const Container = styled.div`
   width: 21rem;
   height: 29.2rem;
 
+  padding: 2.4rem;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,10 +19,21 @@ export const Container = styled.div`
   border: 1px solid ${({ theme }) => theme.COLORS.BORDER};
   border-radius: 8px;
 
-  #heartButton{
+  #heartButton, #pencilButton {
+    background: none;
+
     position: absolute;
     top: 1.6rem;
     right: 1.6rem;
+  }
+
+  #pencilButton {
+    color: ${({ theme }) => theme.COLORS.WHITE_25};
+
+    :first-child {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
   }
 
   img {
@@ -31,22 +44,32 @@ export const Container = styled.div`
   }
 
   #titleButton {
+    width: 16.2rem;
+    
     background: none;
     color: ${({ theme }) => theme.COLORS.WHITE_25};
     font-size: 1.4rem;
 
     display: flex;
-    align-items: center;
+    justify-content: center;
   }
 
   #price {
     color: ${({ theme }) => theme.COLORS.BLUE};
   }
+`;
 
-  div {
+export const Div = styled.div`
+  width: 21rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+
+  > div {
     width: 16.2rem;
   }
-
 `;
 
 export const Span = styled.span`
