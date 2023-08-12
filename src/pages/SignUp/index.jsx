@@ -20,7 +20,7 @@ export function SignUp() {
       <main>
         <Input title="Seu nome" placeholder="Exemplo: Maria da Silva" />
         <Input title="title" placeholder="Exemplo: exemplo@exemplo.com.br" />
-        <Input title="Senha" placeholder="No mínimo 6 caracteres" />
+        <Input type="password" title="Senha" placeholder="No mínimo 6 caracteres" />
 
         <Button title="Criar conta" $buttonWithBackground />
         <Button title="já tenho uma uma conta" onClick={ navigateBack } />
