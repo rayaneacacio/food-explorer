@@ -8,28 +8,40 @@ export const Container = styled.div`
   gap: 0.8rem;
 
   > div {
-    background: ${({ theme }) => theme.COLORS.BACKGROUND_300};
+    background: ${({ theme, $saveOrEditFood }) => $saveOrEditFood ? theme.COLORS.BACKGROUND_333 : theme.COLORS.BACKGROUND_300};
+
+    width: 100%;
 
     display: flex;
     align-items: center;
-    gap: 1.4rem;
 
-    width: 100%;
-    height: 4.8rem;
-
-    padding: 1.2rem 1.4rem;
     border-radius: 0.8rem;
 
     span {
+      padding-left: 1rem;
+      
       :first-child {
         width: 2.4rem;
         height: 2.4rem;
       }
     }
 
-    input {
+    input, textarea {
+      background: ${({ theme, $saveOrEditFood }) => $saveOrEditFood ? theme.COLORS.BACKGROUND_333 : theme.COLORS.BACKGROUND_300};
       width: 100%;
+      padding: 1.2rem 1.4rem;
+      border-radius: 0.8rem;
     }
+
+    input {
+      height: 4.8rem;
+    }
+
+    textarea {
+      height: 17.2rem;
+      resize: none;
+    }
+
   }
 
 `;
