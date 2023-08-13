@@ -22,7 +22,7 @@ export default createGlobalStyle`
 
     width: 42.8rem;
 
-    overflow: hidden;
+    /* overflow: hidden; */
     scroll-behavior: smooth;
   }
 
@@ -39,7 +39,6 @@ export default createGlobalStyle`
   }
 
   input, textarea {
-    background: ${({ theme }) => theme.COLORS.BACKGROUND_300};
     color: ${({ theme }) => theme.COLORS.WHITE};
     font-family: ${({ theme }) => theme.FONTS.MAIN};
     font-size: 1.6rem;

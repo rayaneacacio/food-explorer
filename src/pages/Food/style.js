@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  height: 91.8rem;
+  height: 100vh;
   overflow-y: auto;
 
   display: flex;
