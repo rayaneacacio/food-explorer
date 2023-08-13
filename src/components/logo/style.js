@@ -4,9 +4,16 @@ export const Container = styled.div`
   display: flex;
   gap: ${({ $logoAuthPage, $footerLogo }) => $logoAuthPage ? "1.074rem" : ($footerLogo ? "0.647rem" : "0.8rem")};
 
+  position: relative;
+
   > img {
     width: ${({ $logoAuthPage, $footerLogo }) => $logoAuthPage ? "4.3315rem" : ($footerLogo ? "2.2rem" : "2.4613rem" )};
     height: ${({ $logoAuthPage, $footerLogo }) => $logoAuthPage ? "4.3315rem" : ($footerLogo ? "2.2rem" : "2.4613rem" )};
+
+    @media (min-width: 1000px) {
+      width: ${({ $logoAuthPage }) => $logoAuthPage ? "4.9rem" : "3rem"};
+      height: ${({ $logoAuthPage }) => $logoAuthPage ? "4.7rem" : "3rem"};
+    }
   }
 
   > h1 {
@@ -19,6 +26,10 @@ export const Container = styled.div`
     transform: translateX( ${({ $logoAuthPage }) => $logoAuthPage && "-5rem"} );
 
     animation: ${({ $logoAuthPage }) => $logoAuthPage && "first 1s forwards"};
+
+    @media (min-width: 1000px) {
+      font-size: ${({ $logoAuthPage }) => $logoAuthPage ? "4.2rem" : "2.4rem"};
+    }
   }
 
   > div {
@@ -32,6 +43,12 @@ export const Container = styled.div`
     margin-top: 0.3rem;
 
     display: ${({ $logoAuthPage, $footerLogo }) => ($logoAuthPage || $footerLogo) && "none"};
+
+    @media (min-width: 1000px) {
+      position: absolute;
+      bottom: -1.6rem;
+      right: 0;
+    }
   }
 
   @keyframes first {
