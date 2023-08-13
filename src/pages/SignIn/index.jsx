@@ -18,8 +18,10 @@ export function SignIn() {
       <Logo $logoAuthPage />
 
       <main>
-        <Input title="Email" placeholder="Exemplo: exemplo@exemplo.com.br" />
-        <Input type="password" title="Senha" placeholder="No mínimo 6 caracteres" />
+        <h1>Faça login</h1>
+
+        <Input title="Email" placeholder="Exemplo: exemplo@exemplo.com.br" $inputAuthPage />
+        <Input type="password" title="Senha" placeholder="No mínimo 6 caracteres" $inputAuthPage />
         
         <Button title="Entrar" $buttonWithBackground />
         <Button title="Criar uma conta" onClick={ navigateToRegister } />

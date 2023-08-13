@@ -1,8 +1,8 @@
 import { Container } from "./style";
 
-export function Input({ icon, title, placeholder, $textarea, $saveOrEditFood, ...rest }) {
+export function Input({ icon, title, placeholder, $inputAuthPage = false, $textarea = false, $saveOrEditFood = false, ...rest }) {
   return (
-    <Container $saveOrEditFood={ $saveOrEditFood }>
+    <Container $saveOrEditFood={ $saveOrEditFood } $inputAuthPage={ $inputAuthPage }>
       { title }
       <div>
         {

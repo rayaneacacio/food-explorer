@@ -9,11 +9,6 @@ export const Container = styled.div`
   > img {
     width: ${({ $logoAuthPage, $footerLogo }) => $logoAuthPage ? "4.3315rem" : ($footerLogo ? "2.2rem" : "2.4613rem" )};
     height: ${({ $logoAuthPage, $footerLogo }) => $logoAuthPage ? "4.3315rem" : ($footerLogo ? "2.2rem" : "2.4613rem" )};
-
-    @media (min-width: 1000px) {
-      width: ${({ $logoAuthPage }) => $logoAuthPage ? "4.9rem" : "3rem"};
-      height: ${({ $logoAuthPage }) => $logoAuthPage ? "4.7rem" : "3rem"};
-    }
   }
 
   > h1 {
@@ -26,10 +21,6 @@ export const Container = styled.div`
     transform: translateX( ${({ $logoAuthPage }) => $logoAuthPage && "-5rem"} );
 
     animation: ${({ $logoAuthPage }) => $logoAuthPage && "first 1s forwards"};
-
-    @media (min-width: 1000px) {
-      font-size: ${({ $logoAuthPage }) => $logoAuthPage ? "4.2rem" : "2.4rem"};
-    }
   }
 
   > div {
@@ -55,6 +46,17 @@ export const Container = styled.div`
     to {
       opacity: 1;
       transform: translateX(0.5rem);
+    }
+  }
+
+  @media (min-width: 1000px) {
+    > img {
+      width: ${({ $logoAuthPage }) => $logoAuthPage ? "4.9rem" : "3rem"};
+      height: ${({ $logoAuthPage }) => $logoAuthPage ? "4.7rem" : "3rem"};
+    }
+      
+    > h1 {
+      font-size: ${({ $logoAuthPage }) => $logoAuthPage ? "4.2rem" : "2.4rem"};
     }
   }
 `;

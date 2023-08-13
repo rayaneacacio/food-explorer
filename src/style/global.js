@@ -20,7 +20,7 @@ export default createGlobalStyle`
 
     -webkit-font-smoothing: antialiased;
 
-    width: 42.8rem;
+    /* width: 42.8rem; */
 
     /* overflow: hidden; */
     scroll-behavior: smooth;
