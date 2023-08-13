@@ -7,12 +7,12 @@ import { Container } from "./style";
 export function BackButton({ $saveOrEditFood }) {
   const navigate = useNavigate();
 
-  function navigateBack() {
-    navigate(-1);
+  function navigateBackHome() {
+    navigate("/");
   }
 
   return (
-    <Container $saveOrEditFood={ $saveOrEditFood } onClick={ navigateBack }>
+    <Container $saveOrEditFood={ $saveOrEditFood } onClick={ navigateBackHome }>
       <IoIosArrowBack /> voltar
     </Container>
   )
