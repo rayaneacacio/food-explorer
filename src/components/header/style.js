@@ -12,7 +12,10 @@ export const Container = styled.header`
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: ${({ $isAdmin }) => $isAdmin ? "flex-start" : "space-around"};
+    gap: ${({ $isAdmin }) => $isAdmin && "8rem"};
+
+    padding-left: ${({ $isAdmin }) => $isAdmin && "2.8rem"};;
   }
 
   .headerMenu {
@@ -48,7 +51,7 @@ export const Container = styled.header`
     animation-fill-mode: forwards;
   }
 
-  #input, #buttonReceiptDesktop, #buttonSignOut {
+  #input, #buttonReceiptDesktop, #buttonNewFood, #buttonSignOut {
     display: none;
   }
 
@@ -112,6 +115,11 @@ export const Container = styled.header`
         width: 3.2rem;
         height: 3.2rem;
       }
+    }
+
+    #buttonNewFood {
+      width: 21.6rem;
+      display: block;
     }
 
     #buttonSignOut {

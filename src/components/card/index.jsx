@@ -34,6 +34,8 @@ export function Card({ img, title, price }) {
 
       <button id="titleButton" onClick={ navigateToFood }> {` ${ title } >`} </button>
 
+      <p>Massa fresca com camarões e pesto.</p>
+
       <span id="price"> R$ { price } </span>
 
       {

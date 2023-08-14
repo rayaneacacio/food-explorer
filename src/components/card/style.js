@@ -54,8 +54,39 @@ export const Container = styled.div`
     justify-content: center;
   }
 
+  p {
+    display: none;
+  }
+
   #price {
     color: ${({ theme }) => theme.COLORS.BLUE};
+  }
+
+  @media(min-width: 1000px) {
+    width: 30.4rem;
+    height: 46.2rem;
+
+    gap: 1.5rem;
+
+    > img {
+      width: 17.6rem;
+      height: 17.6rem;
+    }
+
+    #titleButton {
+      font-size: 2.4rem;
+      width: 25.6rem;
+    }
+
+    p {
+      display: block;
+      font-size: 1.4rem;
+    }
+
+    #price {
+      font-size: 3.2rem;
+      height: 5.2rem;
+    }
   }
 `;
 
@@ -69,6 +100,15 @@ export const Div = styled.div`
 
   > div {
     width: 16.2rem;
+  }
+
+  @media(min-width: 1000px) {
+    flex-direction: row;
+
+    > div {
+      width: 9.2rem;
+      height: 4.8rem;
+    }
   }
 `;
 
@@ -84,5 +124,9 @@ export const Span = styled.span`
       width: 2.4rem;
       height: 2.4rem;
     }
+  }
+
+  @media(min-width: 1000px) {
+    font-size: 2rem;
   }
 `;

@@ -11,10 +11,14 @@ export const Container = styled.footer`
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 2.8rem;
 
   > span {
     padding-bottom: 0.2rem;
+  }
+
+  @media(min-width: 1000px) {
+    padding: 2.4rem 12.3rem;
   }
 `;
