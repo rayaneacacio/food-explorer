@@ -26,7 +26,8 @@ export const Container = styled.div`
     }
 
     > :first-child {
-      margin: 76rem 0 6.2rem 3.6rem;
+      /* margin: 76rem 0 6.2rem 3.6rem; */
+      margin: 65rem 0 6.2rem 3.6rem;
     }
   }
 
@@ -53,7 +54,7 @@ export const Container = styled.div`
       }
 
       > :first-child {
-        margin-top: 89.8rem;
+        margin-top: 93.8rem;
       }
     }
   }

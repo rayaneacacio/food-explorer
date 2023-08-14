@@ -70,8 +70,8 @@ export const Img = styled.div`
   @media(min-width: 1000px) {
     background-size: cover;
 
-    width: 63.2rem;
-    height: 42.6rem;
+    width: 54.2rem;
+    height: 36.6rem;
 
     left: -5rem;
   }
