@@ -8,16 +8,11 @@ export const Container = styled.header`
 
   padding: 6rem 0 2.8rem 0;
 
-  div {
+  > div {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
-    gap: 1.6rem;
-
-    span {
-      width: 27.8rem;
-    }
+    justify-content: space-around;
   }
 
   .headerMenu {
@@ -53,12 +48,20 @@ export const Container = styled.header`
     animation-fill-mode: forwards;
   }
 
+  #input, #buttonReceiptDesktop, #buttonSignOut {
+    display: none;
+  }
+
   #buttonReceipt {
     background: none;
-    width: 3.2rem;
     height: 3.2rem;
 
-    #quantity {
+    > :first-child {
+      width: 3.2rem;
+      height: 3.2rem;
+    }
+
+    .quantity {
       background: ${({ theme }) => theme.COLORS.RED};
       font-family: ${({ theme }) => theme.FONTS.BUTTONS};
       font-size: 1.4rem;
@@ -66,7 +69,6 @@ export const Container = styled.header`
       width: 2rem;
       height: 2rem;
 
-      padding: 1.1rem;
       border-radius: 9.9rem;
 
       position: relative;
@@ -75,4 +77,59 @@ export const Container = styled.header`
     }
   }
 
+  @media(min-width: 1000px) {
+    height: 10.4rem;
+
+    display: flex;
+    justify-content: center;
+
+    > div {
+      gap: 3.2rem;
+    }
+
+    #buttonMenu, #buttonReceipt {
+      display: none;
+    }
+
+    #input {
+      width: 47rem;
+      display: block;
+    }
+
+    #buttonReceiptDesktop {
+      background: ${({ theme }) => theme.COLORS.RED};
+      width: 21.6rem;
+
+      padding: 1.2rem 3.2rem;
+      border-radius: 5px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+
+      :first-child {
+        width: 3.2rem;
+        height: 3.2rem;
+      }
+    }
+
+    #buttonSignOut {
+      background: none;
+      color: ${({ theme }) => theme.COLORS.WHITE};
+
+      display: block;
+
+      > :first-child {
+        width: 3.2rem;
+        height: 3.2rem;
+      }
+    }
+  }
+
+  @media(min-width: 1150px) {
+    #input {
+      width: 58.1rem;
+    }
+  }
 `;

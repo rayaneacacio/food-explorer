@@ -46,7 +46,7 @@ export const Container = styled.div`
 
   @media (min-width: 1000px) {
     input {
-      border: 1px solid ${({ theme }) => theme.COLORS.WHITE};
+      border: 1px solid ${({ theme, $inputAuthPage }) => $inputAuthPage ? theme.COLORS.WHITE : "none"};
     }
   }
 `;

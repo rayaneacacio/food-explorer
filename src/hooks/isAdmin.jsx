@@ -3,7 +3,7 @@ import { createContext, useContext } from "react";
 export const AdminContext = createContext({});
 
 function AdminProvider({ children }) {
-  const isAdmin = true;
+  const isAdmin = false;
 
   return (
     <AdminContext.Provider value ={{ isAdmin }}>
