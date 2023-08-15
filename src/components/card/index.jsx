@@ -10,7 +10,7 @@ import { Button } from "../button";
 
 import { Container, Span, Div } from "./style";
 
-export function Card({ img, title, price }) {
+export function Card({ img, title, price, ...rest }) {
   const { isAdmin } = useAdmin();
 
   let number = "01";
@@ -22,7 +22,7 @@ export function Card({ img, title, price }) {
   }
 
   return (
-    <Container>
+    <Container {...rest}>
       {
         isAdmin ?
         <button id="pencilButton" > <PiPencilSimpleDuotone /> </button>

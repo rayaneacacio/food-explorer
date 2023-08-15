@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 42.8rem;
+  width: 100vw;
+  height: 100vh;
 
   padding-top: 11.5rem;
 
@@ -9,7 +10,7 @@ export const Container = styled.div`
 
   > main {
     width: 100%;
-    height: 100vh;
+    height: 100%;
 
     padding-top: 11.4rem;
 
@@ -26,8 +27,8 @@ export const Container = styled.div`
     }
 
     > :first-child {
-      /* margin: 76rem 0 6.2rem 3.6rem; */
-      margin: 65rem 0 6.2rem 3.6rem;
+      margin: 65rem 2rem 6.2rem 3.6rem;
+      align-self: center;
     }
   }
 
@@ -54,7 +55,7 @@ export const Container = styled.div`
       }
 
       > :first-child {
-        margin-top: 93.8rem;
+        margin-top: 100rem;
       }
     }
   }

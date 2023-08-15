@@ -67,9 +67,11 @@ export function Food() {
           </div>
         }
 
+        <Footer />
+
       </Main>
 
-      <Footer />
+      {/* <Footer /> */}
     </Container>
   )
 }

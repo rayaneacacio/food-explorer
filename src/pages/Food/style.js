@@ -1,13 +1,15 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  width: 100vw;
   height: 100vh;
-  overflow-y: auto;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  position: relative;
 
   &::-webkit-scrollbar {
     background: transparent;
@@ -15,7 +17,24 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.div`
+  width: 100%;
+  height: 100%;
   margin-top: 15rem;
+
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  > :first-child {
+    margin-left: 5.6rem;
+    align-self: flex-start;
+  }
 
   > img {
     width: 26.4rem;
@@ -81,6 +100,64 @@ export const Main = styled.div`
 
     > div {
       width: 18.8rem;
+    }
+  }
+
+  @media(min-width: 1000px) {
+    margin-top: 12.8rem;
+
+    display: grid;
+    grid-template-areas: "button null" "img description" "img values" "footer footer";
+    grid-template-columns: 51.1rem 1fr;
+    align-items: end;
+    gap: 0 4.783rem;
+
+    > :first-child { 
+      width: 10.6rem;
+      margin-left: 12.2rem;
+      grid-area: button;
+    }
+
+    > img {
+      width: 39rem;
+      height: 38.9rem;
+
+      margin-left: 12.2rem;
+      margin-top: 4.2rem;
+
+      grid-area: img;
+    }
+
+    .description {
+      font-size: 2.4rem;
+      text-align: start;
+
+      width: 68.7rem;
+      height: 20.4rem;
+      margin-bottom: 0;
+
+      align-items: flex-start;
+      justify-content: flex-end;
+
+      grid-area: description;
+
+      h1 {
+        font-size: 4rem;
+      }
+    }
+
+    .values {
+      grid-area: values;
+    }
+
+    .buttonEdit {
+      grid-area: values;
+      width: 13.1rem;
+    }
+
+    footer {
+      margin-top: 15rem;
+      grid-area: footer;
     }
   }
 `;

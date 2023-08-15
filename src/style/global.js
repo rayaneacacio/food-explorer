@@ -20,9 +20,6 @@ export default createGlobalStyle`
 
     -webkit-font-smoothing: antialiased;
 
-    /* width: 42.8rem; */
-
-    /* overflow: hidden; */
     scroll-behavior: smooth;
   }
 
@@ -68,11 +65,6 @@ export default createGlobalStyle`
   header {
     position: absolute;
     top: 0;
-  }
-
-  footer {
-    /* position: absolute;
-    bottom: 0; */
   }
 
   @keyframes slide {
