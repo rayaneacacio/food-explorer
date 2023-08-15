@@ -62,6 +62,8 @@ export const Container = styled.div`
 `;
 
 export const Section = styled.section`
+  margin-bottom: 2.4rem;
+
   > h2 {
     margin-left: 2.4rem;
   }
@@ -76,7 +78,7 @@ export const Section = styled.section`
     scroll-behavior: smooth;
 
     &::-webkit-scrollbar {
-    color: transparent;
+      display: none;
     }
   }
 
@@ -86,6 +88,7 @@ export const Section = styled.section`
 
   @media(min-width: 1000px) {
     width: 112.2rem;
+    margin-bottom: 4.7rem;
 
     position: relative;
 

@@ -1,7 +1,7 @@
 export default {
   COLORS: {
     BACKGROUND_900: "#00070A", //background dos cards
-    BACKGROUND_700: "#000A0F", //background da pagina (body)
+    BACKGROUND_700: "#000A0F", //background da body
     BACKGROUND_500: "#001119", //background do header
     BACKGROUND_555: "#00111A", //background do footer
     BACKGROUND_333: "#0D161B", //background dos inputs das pages de criar e editar pratos

@@ -7,6 +7,8 @@ export const Container = styled.div`
 
   position: relative;
 
+  z-index: -1;
+
   > :first-child {
     width: 2.4rem;
     height: 2.4rem;
@@ -14,6 +16,8 @@ export const Container = styled.div`
     position: absolute;
     right: 1.6rem;
     bottom: 1.2rem;
+
+    cursor: pointer;
   }
 
   select {

@@ -15,10 +15,10 @@ export const Container = styled.div`
     padding-top: 15rem;
 
     display: flex;
-    justify-content: center;
 
     > div {
-      width: 37.2rem;
+      width: 100%;
+      padding: 0 2.8rem;
 
       display: flex;
       flex-direction: column;

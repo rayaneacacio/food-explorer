@@ -21,11 +21,15 @@ export function Card({ img, title, price, ...rest }) {
     navigate("/food");
   }
 
+  function navigateEditFood() {
+    navigate("/edit-food");
+  }
+
   return (
     <Container {...rest}>
       {
         isAdmin ?
-        <button id="pencilButton" > <PiPencilSimpleDuotone /> </button>
+        <button id="pencilButton" onClick={ navigateEditFood } > <PiPencilSimpleDuotone /> </button>
         :
         <HeartButton id="heartButton" />
       }
