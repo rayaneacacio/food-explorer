@@ -19,7 +19,7 @@ export const Container = styled.div`
 export const Main = styled.div`
   width: 100%;
   height: 100%;
-  margin-top: 15rem;
+  padding-top: 15rem;
 
   overflow-y: auto;
 
@@ -71,6 +71,7 @@ export const Main = styled.div`
   }
 
   .buttonEdit {
+    width: 31.6rem;
     margin-bottom: 4.943rem;
   }
 
@@ -104,7 +105,7 @@ export const Main = styled.div`
   }
 
   @media(min-width: 1000px) {
-    margin-top: 12.8rem;
+    padding-top: 12.8rem;
 
     display: grid;
     grid-template-areas: "button null" "img description" "img values" "footer footer";

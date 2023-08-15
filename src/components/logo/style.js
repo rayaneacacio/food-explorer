@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
+  align-items: center;
   gap: ${({ $logoAuthPage, $footerLogo }) => $logoAuthPage ? "1.074rem" : ($footerLogo ? "0.647rem" : "0.8rem")};
 
   position: relative;

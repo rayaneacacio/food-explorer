@@ -27,6 +27,10 @@ export function Header({ menu = false }) {
     navigate(-1);
   }
 
+  function navigateNewFood() {
+    navigate("/new-food");
+  }
+
   return (
     <Container $isAdmin={ isAdmin }>
       {
@@ -64,7 +68,7 @@ export function Header({ menu = false }) {
           {
             isAdmin ?
             <div id="buttonNewFood">
-              <Button title="Novo Prato" $buttonWithBackground />
+              <Button title="Novo Prato" $buttonWithBackground onClick={ navigateNewFood } />
             </div>
             :
             <button id="buttonReceiptDesktop">

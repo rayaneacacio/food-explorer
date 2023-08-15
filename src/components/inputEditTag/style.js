@@ -7,6 +7,7 @@ export const Container = styled.div`
 
   div {
     background: ${({ theme }) => theme.COLORS.BACKGROUND_333};
+    height: 4.8rem;
 
     border-radius: 0.8rem;
 

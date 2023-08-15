@@ -20,7 +20,7 @@ export function NewFood() {
         <h1>Novo Prato</h1>
 
         <Div>
-          <InputFile placeholder="Selecione imagem" />
+          <InputFile id="inputFile" placeholder="Selecione imagem" />
           
           <Input title="Nome" placeholder="Ex.: Salada Ceasar" $saveOrEditFood />
 
@@ -34,9 +34,9 @@ export function NewFood() {
 
           <Button title="Salvar alterações" $buttonSave />
         </Div>
-      </Main>
 
-      <Footer />
+        <Footer />
+      </Main>
     </Container>
   )
 }

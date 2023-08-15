@@ -70,8 +70,6 @@ export function Food() {
         <Footer />
 
       </Main>
-
-      {/* <Footer /> */}
     </Container>
   )
 }

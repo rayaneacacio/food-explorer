@@ -12,4 +12,13 @@ export const Container = styled.button`
     width:  ${({ $saveOrEditFood }) => $saveOrEditFood ? "2.2rem" : "3.2rem"};
     height: ${({ $saveOrEditFood }) => $saveOrEditFood ? "2.2rem" : "3.2rem"};
   }
+
+  @media(min-width: 1000px) {
+    font-size: 2.4rem;
+
+    :first-child {
+      width: 3.2rem;
+      height: 3.2rem;
+    }
+  }
 `;
