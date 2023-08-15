@@ -38,9 +38,10 @@ export function EditFood() {
           </div>
           
         </Div>
+        
+        <Footer />
       </Main>
 
-      <Footer />
     </Container>
   )
 }
