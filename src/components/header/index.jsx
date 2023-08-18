@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
+import { useAuth } from "../../hooks/auth";
 import { useAdmin } from "../../hooks/isAdmin";
 
 import { GoSearch } from "react-icons/go";
@@ -15,6 +16,7 @@ import { Button } from "../button";
 import { Container } from "./style";
 
 export function Header({ menu = false }) {
+  const { signOut } = useAuth();
   const { isAdmin } = useAdmin();
 
   const navigate = useNavigate();
@@ -29,6 +31,10 @@ export function Header({ menu = false }) {
 
   function navigateNewFood() {
     navigate("/new-food");
+  }
+
+  async function handleSignOut() {
+    await signOut();
   }
 
   return (
@@ -77,7 +83,7 @@ export function Header({ menu = false }) {
             </button>
           }
         
-          <button id="buttonSignOut">
+          <button id="buttonSignOut" onClick={ handleSignOut }>
             <PiSignOutLight />
           </button>
         </div>
