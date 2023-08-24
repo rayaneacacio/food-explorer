@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 import { useAuth } from "../../hooks/auth";
 
@@ -13,9 +14,45 @@ import { Container, Span, Div } from "./style";
 export function Card({ img, title, description, price, ...rest }) {
   const { isAdmin } = useAuth();
 
-  let number = "01";
+  const [ quantityOfItems, setQuantityOfItems ] = useState("01");
 
   const navigate = useNavigate();
+
+  function add1() {
+    let number = 0;
+
+    if(quantityOfItems > 8) {
+      number = quantityOfItems;
+      number++;
+
+      setQuantityOfItems(number);
+      return
+    }
+
+    number = quantityOfItems.split(0)[1];
+    number++
+
+    setQuantityOfItems(`0${number}`);
+  }
+
+  function reduce1() {
+    let number = 0;
+    if(quantityOfItems < 2) {
+      return
+    }
+    
+    if(quantityOfItems < 11) {
+      number = quantityOfItems;
+      number--;
+      setQuantityOfItems(`0${number}`);
+      return
+    }
+
+    number = quantityOfItems;
+    number--;
+
+    setQuantityOfItems(number);
+  }
 
   function navigateToFood() {
     navigate(`/food/${ title }`);
@@ -46,9 +83,9 @@ export function Card({ img, title, description, price, ...rest }) {
         !isAdmin &&
         <Div>
           <Span>
-            <button> <AiOutlineMinus /> </button>
-            { number }
-            <button> <AiOutlinePlus /> </button>
+            <button onClick={ reduce1 }> <AiOutlineMinus /> </button>
+            { quantityOfItems }
+            <button onClick={ add1 }> <AiOutlinePlus /> </button>
           </Span>
 
           <div>

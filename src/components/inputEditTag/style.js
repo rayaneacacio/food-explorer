@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  width: 83.7rem;
+  
   display: flex;
   flex-direction: column;
   gap: 1.6rem;

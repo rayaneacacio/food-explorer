@@ -16,7 +16,7 @@ import { Button } from "../button";
 
 import { Container } from "./style";
 
-export function Header({ menu = false }) {
+export function Header({ menu = false, ...rest }) {
   const { isAdmin, signOut } = useAuth();
   const { searchNote } = useNotes();
 
@@ -34,6 +34,10 @@ export function Header({ menu = false }) {
 
   function navigateNewFood() {
     navigate("/new-food");
+  }
+
+  function navigateHome() {
+    navigate("/");
   }
 
   async function handleSignOut() {
@@ -81,7 +85,7 @@ export function Header({ menu = false }) {
           }
         
           <div id="input">
-            <Input icon={ <GoSearch /> } placeholder="Busque por pratos ou ingredientes" onChange={e => setNoteTitle(e.target.value)} />
+            <Input icon={ <GoSearch /> } placeholder="Busque por pratos ou ingredientes" onChange={e => setNoteTitle(e.target.value)} onClick={ navigateHome } {...rest} />
           </div>
 
           {

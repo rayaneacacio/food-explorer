@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 import { useTags } from "../../hooks/tags";
 
 import { AiOutlinePlus, AiOutlineClose } from "react-icons/ai";
 
 import { Container } from "./style";
-import { useParams } from "react-router-dom";
 
 export function EditTag({ title, $new = false, ...rest }) {
   const { tagsStorage, filterTags, receiveTags, localTags } = useTags();
@@ -35,9 +35,7 @@ export function EditTag({ title, $new = false, ...rest }) {
   }, []);
 
   useEffect(() => {
-    if(localTags) {
       setIngredients(localTags);
-    }
     
   }, [ localTags ]);
 
