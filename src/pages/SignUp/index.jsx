@@ -23,6 +23,11 @@ export function SignUp() {
   }
 
   async function handleSignUp() {
+    if(!name || !email || !password) {
+      alert("preencha todos os campos");
+      return;
+    }
+
     await signUp({ name, email, password });
   }
 

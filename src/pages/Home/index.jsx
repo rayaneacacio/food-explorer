@@ -1,4 +1,12 @@
-import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import { useEffect, useState } from "react";
+
+import { api } from "../../services/api";
+import { useNotes } from "../../hooks/notes";
+import { useTags } from "../../hooks/tags";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 import { Header } from "../../components/header";
 import { Banner } from "../../components/banner";
@@ -8,12 +16,52 @@ import { Footer } from "../../components/footer";
 import { Container, Section } from "./style";
 
 export function Home() {
-  function handleLeftClick() {
+  const { viewNotes, splitNotes, refeicoes, sobremesas, bebidas } = useNotes();
+  const { clearTagsStorage } = useTags();
 
+  const [ sliderPerView, setSliderPerview ] = useState(3.3);
+
+  function handleResize() {
+    if(window.innerWidth > 750) {
+      setSliderPerview(3.3);
+    } else if (window.innerWidth > 600) {
+      setSliderPerview(2.5);
+    } else if (window.innerWidth > 610) {
+      setSliderPerview(2.3);
+    } else {
+      setSliderPerview(1.7);
+    }
   }
 
-  function handleRightClick() {
-  }
+  // function handleDisplayButtons(category) {
+  //   const sliderButtonPrev = document.querySelector(".swiper-button-prev");
+  //   const sliderButtonNext = document.querySelector(".swiper-button-next");
+
+  //   if(category.length < 4) {
+  //     sliderButtonPrev.style.display = "none";
+  //     sliderButtonNext.style.display = "none";
+  //   }
+
+  // }
+
+  useEffect(() => {
+    async function fetchData() {
+      clearTagsStorage();
+      await viewNotes();
+      await splitNotes();
+    }
+    
+    fetchData();
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    }
+
+  }, []);
 
   return (
     <Container>
@@ -22,38 +70,56 @@ export function Home() {
       <main>
         <Banner />
 
-        <Section>
-          <h2> Refeições </h2>
+        {
+          (refeicoes.length > 0) &&
+          <Section>
+            <h2> Refeições </h2>
 
-          <div className="boxCards">
-            <Card className="cards" img="https://s3-alpha-sig.figma.com/img/b0c9/ae3d/7ca1a259f937ab6aebbc5ba2ffd2d4ab?Expires=1692576000&Signature=BV7wo-ZBsPSX0aq06DPPCJG1~AN3kBXVtIokHWW5CQSS6CXyPzjL2uYH-zHe7cIL4S-AhzwZiaVrfsaB1e4p85Kl45BfFGiYtr-mU3HNpZhXf9QdICkuz7QPioIwxgLcKEjO8nfBsHbLpglRyy3JyGx2ERGJlkCxDlWl6sIsg5P3-gKdLFA727AIg04hQ1353h-KfQvx3iuX0eC8trDcOAWXBIFNf~eQ0glAZQLRrqjtmM4a-MEPb37Yr~rA5e6~35VM7zSDAqvO2ABuzMVKGbRAIQSCOJqO4ojJf4pCHQyuaFa4CxMNEEQy~0G5Y8tkH0GIFjNWfXvMfsOaA0tLfw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" title="Salada Ravanello" price="49,97" />
-          </div>
+            <Swiper slidesPerView={ sliderPerView } navigation className="boxCards" >
+              {
+                refeicoes.map(note => (
+                  <SwiperSlide key={ String(note.id) }>
+                    <Card img={ `${api.defaults.baseURL}/files/${note.image}` } title={ note.title } description={ note.description } price={ note.price } />
+                  </SwiperSlide>
+                ))
+              }
+            </Swiper>
+          </Section>
+        }
 
-          <button className="buttonArrowLeft" onClick={ handleLeftClick }> <AiOutlineLeft /> </button>
-          <button className="buttonArrowRight" onClick={ handleRightClick }> <AiOutlineRight /> </button>
-        </Section>
+        {
+          (sobremesas.length > 0) &&
+          <Section>
+            <h2> Sobremesas </h2>
 
-        <Section>
-          <h2> Pratos principais </h2>
+            <Swiper slidesPerView={ sliderPerView } navigation className="boxCards">
+              {
+                sobremesas.map(note => (
+                  <SwiperSlide key={ String(note.id) }>
+                    <Card img={ `${api.defaults.baseURL}/files/${note.image}` } title={ note.title } description={ note.description } price={ note.price } />
+                  </SwiperSlide>
+                ))
+              }
+            </Swiper>
+          </Section>
+        }
 
-          <div>
-            <Card />
-          </div>
+        {
+          (bebidas.length > 0) &&
+          <Section>
+            <h2> Bebidas </h2>
 
-          <button className="buttonArrowLeft" onClick={ handleLeftClick }> <AiOutlineLeft /> </button>
-          <button className="buttonArrowRight" onClick={ handleRightClick }> <AiOutlineRight /> </button>
-        </Section>
-
-        <Section>
-          <h2> Bebidas </h2>
-
-          <div>
-            <Card />
-          </div>
-
-          <button className="buttonArrowLeft" onClick={ handleLeftClick }> <AiOutlineLeft /> </button>
-          <button className="buttonArrowRight" onClick={ handleRightClick }> <AiOutlineRight /> </button>
-        </Section>
+            <Swiper slidesPerView={ sliderPerView } navigation className="boxCards">
+              {
+                bebidas.map(note => (
+                  <SwiperSlide key={ String(note.id) }>
+                    <Card img={ `${api.defaults.baseURL}/files/${note.image}` } title={ note.title } description={ note.description } price={ note.price } />
+                  </SwiperSlide>
+                ))
+              }
+            </Swiper>
+          </Section>
+        }
 
         <Footer />
 

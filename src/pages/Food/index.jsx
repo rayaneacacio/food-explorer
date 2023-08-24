@@ -1,6 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
+import { api } from "../../services/api";
 import { useAdmin } from "../../hooks/isAdmin";
+import { useNotes } from "../../hooks/notes";
+import { useTags } from "../../hooks/tags";
 
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { PiReceipt } from "react-icons/pi";
@@ -15,14 +19,64 @@ import { Container, Main } from "./style";
 
 export function Food() {
   const { isAdmin } = useAdmin();
+  const { searchNote, card } = useNotes();
+  const { searchTags, cardTags } = useTags();
 
   const navigate = useNavigate();
 
-  let number = "01";
+  const { title } = useParams();
+
+  const [ quantityOfItems, setQuantityOfItems ] = useState("01");
 
   function navigateToEditFood() {
-    navigate("/edit-food");
+    navigate(`/edit-food/${ title }`);
   }
+
+  function add1() {
+    let number = 0;
+
+    if(quantityOfItems > 8) {
+      number = quantityOfItems;
+      number++;
+
+      setQuantityOfItems(number);
+      return
+    }
+
+    number = quantityOfItems.split(0)[1];
+    number++
+
+    setQuantityOfItems(`0${number}`);
+  }
+
+  function reduce1() {
+    let number = 0;
+    if(quantityOfItems < 2) {
+      return
+    }
+    
+    if(quantityOfItems < 11) {
+      number = quantityOfItems;
+      number--;
+      setQuantityOfItems(`0${number}`);
+      return
+    }
+
+    number = quantityOfItems;
+    number--;
+
+    setQuantityOfItems(number);
+  }
+
+  useEffect(() => {
+    async function fetchData() {
+      await searchNote({ title });
+      await searchTags({ note_id: card.id });
+    }
+
+    fetchData();
+
+  }, []);
 
   return (
     <Container>
@@ -31,20 +85,20 @@ export function Food() {
       <Main>
         <BackButton />
 
-        <img src="https://s3-alpha-sig.figma.com/img/b0c9/ae3d/7ca1a259f937ab6aebbc5ba2ffd2d4ab?Expires=1692576000&Signature=BV7wo-ZBsPSX0aq06DPPCJG1~AN3kBXVtIokHWW5CQSS6CXyPzjL2uYH-zHe7cIL4S-AhzwZiaVrfsaB1e4p85Kl45BfFGiYtr-mU3HNpZhXf9QdICkuz7QPioIwxgLcKEjO8nfBsHbLpglRyy3JyGx2ERGJlkCxDlWl6sIsg5P3-gKdLFA727AIg04hQ1353h-KfQvx3iuX0eC8trDcOAWXBIFNf~eQ0glAZQLRrqjtmM4a-MEPb37Yr~rA5e6~35VM7zSDAqvO2ABuzMVKGbRAIQSCOJqO4ojJf4pCHQyuaFa4CxMNEEQy~0G5Y8tkH0GIFjNWfXvMfsOaA0tLfw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4" alt="foto de Salada Ravanello" />
+        <img src={`${ api.defaults.baseURL}/files/${ card.image }`} alt={ `foto de ${ card.title }` } />
 
         <div className="description">
-          <h1> Salada Ravanello </h1>
+          <h1> { card.title } </h1>
 
-          <p> Rabanetes, folhas verdes e molho agridoce salpicados com gergelim. </p>
+          <p> { card.description } </p>
 
           <div>
-            <Tag title="alface" />
-            <Tag title="cebola" />
-            <Tag title="pao naan" />
-            <Tag title="pepino" />
-            <Tag title="rabanete" />
-            <Tag title="tomate" />
+            {
+              cardTags &&
+              cardTags.map(tag => (
+                <Tag key={ String(tag.id) } title={ tag.title } />
+              ))
+            }
           </div>
         </div>
 
@@ -56,13 +110,13 @@ export function Food() {
           :
           <div className="values">
             <span>
-              <button> <AiOutlineMinus /> </button>
-              { number }
-              <button> <AiOutlinePlus /> </button>
+              <button onClick={ reduce1 }> <AiOutlineMinus /> </button>
+              { quantityOfItems }
+              <button onClick={ add1 }> <AiOutlinePlus /> </button>
             </span>
 
             <div>
-              <Button icon={ <PiReceipt /> } title="pedir ∙ R$ 25,00" $buttonWithBackground />
+              <Button icon={ <PiReceipt /> } title={`pedir ∙ R$ ${ card.price }`} $buttonWithBackground />
             </div>
           </div>
         }

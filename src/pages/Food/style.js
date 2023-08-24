@@ -145,6 +145,10 @@ export const Main = styled.div`
       h1 {
         font-size: 4rem;
       }
+
+      div {
+        justify-content: start;
+      }
     }
 
     .values {

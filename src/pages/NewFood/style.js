@@ -44,7 +44,7 @@ export const Main = styled.main`
   }
 `;
 
-export const Div = styled.div`
+export const Form = styled.form`
   margin: 0 3.2rem;
 
   display: flex;
@@ -89,6 +89,68 @@ export const Div = styled.div`
 
     > :last-child {
       grid-area: button;
+    }
+  }
+`;
+
+export const Select = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  > :first-child {
+    width: 2.4rem;
+    height: 2.4rem;
+
+    cursor: pointer;
+  }
+
+  select {
+    background: ${({ theme }) => theme.COLORS.BACKGROUND_300};
+    color: ${({ theme }) => theme.COLORS.GRAY};
+    font-family: ${({ theme }) => theme.FONTS.MAIN};
+    font-size: 1.4rem;
+
+    width: 100%;
+    height: 4.8rem;
+
+    padding: 1.6rem;
+    border-radius: 8px;
+
+    cursor: pointer;
+  }
+`;
+
+export const InputFile = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  > label {
+    background: ${({ theme }) => theme.COLORS.BACKGROUND_333};
+    color: ${({ theme }) => theme.COLORS.WHITE};
+    font-family: ${({ theme }) => theme.FONTS.BUTTONS};
+    font-weight: 500;
+    height: 4.8rem;
+
+    width: 100%;
+
+    padding: 1.2rem 2.2rem;
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    cursor: pointer;
+
+    > :first-child {
+      width: 2.4rem;
+      height: 2.4rem;
+    }
+
+    input {
+      display: none;
     }
   }
 `;

@@ -11,13 +11,19 @@ export const Container = styled.div`
 
   > main {
     width: 100%;
+    height: 100%;
 
     padding-top: 15rem;
 
-    display: flex;
+    /* display: flex; */
 
     > div {
+      display: none;
+    }
+
+    > nav {
       width: 100%;
+      /* height: 100%; */
       padding: 0 2.8rem;
 
       display: flex;
@@ -27,7 +33,23 @@ export const Container = styled.div`
   }
 
   > footer {
-    position: absolute;
-    bottom: 0;
+    /* position: absolute; */
+    /* bottom: 0; */
+  }
+`;
+
+export const Div = styled.div`
+  margin-bottom: 2.4rem;
+
+  > h2 {
+    margin-left: 2.4rem;
+  }
+
+  .boxCards {
+    padding: 2.4rem;
+  }
+
+  .swiper-button-prev, .swiper-button-next {
+    display: none;
   }
 `;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 100%;
 
   padding-top: 11.5rem;
 
@@ -12,7 +12,7 @@ export const Container = styled.div`
     width: 100%;
     height: 100%;
 
-    padding-top: 11.4rem;
+    padding-top: 2.4rem;
 
     display: flex;
     flex-direction: column;
@@ -27,7 +27,7 @@ export const Container = styled.div`
     }
 
     > :first-child {
-      margin: 65rem 2rem 6.2rem 3.6rem;
+      margin: 3rem 2rem 6.2rem 3.6rem;
       align-self: center;
     }
   }
@@ -43,7 +43,7 @@ export const Container = styled.div`
 
     > main {
       align-items: center;
-      padding-top: 65rem;
+      padding-top: 10.4rem;
 
       &::-webkit-scrollbar {
         background: transparent;
@@ -52,10 +52,6 @@ export const Container = styled.div`
 
       &::-webkit-scrollbar-thumb {
         background: white;
-      }
-
-      > :first-child {
-        margin-top: 100rem;
       }
     }
   }
@@ -68,23 +64,14 @@ export const Section = styled.section`
     margin-left: 2.4rem;
   }
 
-  > div {
-    display: flex;
-    gap: 1.6rem;
-
+  .boxCards {
     padding: 2.4rem;
-
-    overflow-x: scroll;
-    scroll-behavior: smooth;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
   }
 
-  .buttonArrowLeft, .buttonArrowRight {
+  .swiper-button-prev, .swiper-button-next {
     display: none;
   }
+  
 
   @media(min-width: 1000px) {
     width: 112.2rem;
@@ -97,30 +84,33 @@ export const Section = styled.section`
       font-weight: 500;
     }
 
-    .buttonArrowLeft, .buttonArrowRight {
+    .boxCards {
+      width: 112.5rem;
+      height: 46.2rem;
+    }
+
+    .swiper-button-prev, .swiper-button-next {
+      color: ${({ theme }) => theme.COLORS.WHITE};
+
       width: 22.4rem;
+      height: 100%;
 
       position: absolute;
-      top: 6rem;
-      bottom: 4.5rem;
+      top: 4rem;
 
-      display: block;
-      flex-shrink: 0;
-
-      :first-child {
-        width: 4rem;
-        height: 4rem;
-      }
+      display: flex;
     }
 
-    .buttonArrowLeft {
+    .swiper-button-prev {
       background: var(--gradients-100, linear-gradient(-90deg, rgba(0, 10, 15, 0.27) 0%, #000A0F 100%));
       left: 0;
+      justify-content: flex-start;
     }
 
-    .buttonArrowRight {
+    .swiper-button-next {
       background: var(--gradients-100, linear-gradient(90deg, rgba(0, 10, 15, 0.27) 0%, #000A0F 100%));
       right: 0;
+      justify-content: flex-end;
     }
   }
 `;
