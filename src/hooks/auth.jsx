@@ -54,7 +54,10 @@ function AuthProvider({ children }) {
     localStorage.removeItem("@foodexplorer:user");
     localStorage.removeItem("@foodexplorer:token");
     localStorage.removeItem("@foodexplorer:userAdmin");
-    localStorage.removeItem("@foodexplorer:alltags");
+    localStorage.removeItem("@foodexplorer:allnotes");
+    localStorage.removeItem("@foodexplorer:cardTags");
+    localStorage.removeItem("@foodexplorer:localtags");
+    localStorage.removeItem("@foodexplorer:note");
   }
 
   useEffect(() => {

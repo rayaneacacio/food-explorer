@@ -48,6 +48,8 @@ function TagsProvider({ children }) {
 
     setCardTags(tags);
     localStorage.setItem("@foodexplorer:cardTags", JSON.stringify(tags));
+
+    return tags;
   }
 
   function receiveTags() {

@@ -67,7 +67,7 @@ function NotesProvider({ children })  {
     
     localStorage.setItem("@foodexplorer:allnotes", JSON.stringify(notes));
 
-    return notes;
+    return { notes, firstNote };
   }
 
   async function updateNote({ id, title, category, price, description }) {
@@ -76,6 +76,11 @@ function NotesProvider({ children })  {
 
   async function removeNote({ id }) {
     await api.post("/notes/delete", { id });
+  }
+
+  function clearNoteStorage() {
+    localStorage.removeItem("@foodexplorer:note")
+    setCard({});
   }
 
   function splitNotes() {
@@ -123,7 +128,7 @@ function NotesProvider({ children })  {
   }, [ allNotes ]);
 
   return (
-    <NotesContext.Provider value={{ newNote, updateImg, viewNotes, searchNote, updateNote, removeNote, splitNotes, allNotes, card, refeicoes, sobremesas, bebidas }}>
+    <NotesContext.Provider value={{ newNote, updateImg, viewNotes, searchNote, updateNote, removeNote, splitNotes, clearNoteStorage, allNotes, card, refeicoes, sobremesas, bebidas }}>
       { children }
     </NotesContext.Provider>
   )
