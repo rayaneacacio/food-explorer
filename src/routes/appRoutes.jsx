@@ -15,14 +15,14 @@ export function AppRoutes() {
     <Routes>
       <Route path="/" element={ <Home /> } />
       <Route path="/menu" element={ <Menu /> } />
-      <Route path="/food" element={ <Food /> } />
+      <Route path="/food/:title" element={ <Food /> } />
       {
         isAdmin &&
         <Route path="/new-food" element={ <NewFood /> } /> 
       }
       {
         isAdmin &&
-        <Route path="/edit-food" element={ <EditFood /> } /> 
+        <Route path="/edit-food/:title" element={ <EditFood /> } /> 
       }
     </Routes>
   )
