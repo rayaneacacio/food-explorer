@@ -63,8 +63,9 @@ export default createGlobalStyle`
   }
 
   header {
-    position: absolute;
+    position: fixed;
     top: 0;
+    z-index: 2;
   }
 
   @keyframes slide {
@@ -85,4 +86,22 @@ export default createGlobalStyle`
     }
   }
 
+  @keyframes loadingEffect{
+    to {
+      background-position: 0% 0%;
+    }
+
+    from {
+      background-position: 135% 0%;
+    }
+  }
+
+  @keyframes spin {
+  to { 
+    transform: rotate(0deg); 
+  }
+  from { 
+    transform: rotate(360deg); 
+  }
+  }
 `;
