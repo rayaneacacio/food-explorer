@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { useAuth } from "../../hooks/auth";
-import { useAdmin } from "../../hooks/isAdmin";
 import { useNotes } from "../../hooks/notes";
 
 import { GoSearch } from "react-icons/go";
@@ -18,8 +17,7 @@ import { Button } from "../button";
 import { Container } from "./style";
 
 export function Header({ menu = false }) {
-  const { signOut } = useAuth();
-  const { isAdmin } = useAdmin();
+  const { isAdmin, signOut } = useAuth();
   const { searchNote } = useNotes();
 
   const [ noteTitle, setNoteTitle ] = useState();

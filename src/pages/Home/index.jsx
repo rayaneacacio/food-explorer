@@ -33,17 +33,6 @@ export function Home() {
     }
   }
 
-  // function handleDisplayButtons(category) {
-  //   const sliderButtonPrev = document.querySelector(".swiper-button-prev");
-  //   const sliderButtonNext = document.querySelector(".swiper-button-next");
-
-  //   if(category.length < 4) {
-  //     sliderButtonPrev.style.display = "none";
-  //     sliderButtonNext.style.display = "none";
-  //   }
-
-  // }
-
   useEffect(() => {
     async function fetchData() {
       clearTagsStorage();

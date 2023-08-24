@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { api } from "../../services/api";
-import { useAdmin } from "../../hooks/isAdmin";
 import { useAuth } from "../../hooks/auth";
 import { useNotes } from "../../hooks/notes";
 
@@ -21,8 +20,7 @@ import { Footer } from "../../components/footer";
 import { Container, Div } from "./style";
 
 export function Menu() {
-  const { isAdmin } = useAdmin();
-  const { signOut } = useAuth();
+  const { isAdmin, signOut } = useAuth();
   const { refeicoes, sobremesas, bebidas, searchNote } = useNotes();
 
   const [ noteTitle, setNoteTitle ] = useState("");

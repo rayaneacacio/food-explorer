@@ -1,4 +1,4 @@
-import { useAdmin } from "../../hooks/isAdmin";
+import { useAuth } from "../../hooks/auth";
 
 import logoBlue from "../../assets/logoBlue.svg";
 import logoGray from "../../assets/logoGray.svg";
@@ -6,7 +6,7 @@ import logoGray from "../../assets/logoGray.svg";
 import { Container } from "./style";
 
 export function Logo({ $footerLogo = false, $logoAuthPage = false, ...rest }) {
-  const { isAdmin } = useAdmin();
+  const { isAdmin } = useAuth();
   
   return (
     <Container $footerLogo={ $footerLogo } $logoAuthPage={ $logoAuthPage } {...rest}>

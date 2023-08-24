@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { api } from "../../services/api";
-import { useAdmin } from "../../hooks/isAdmin";
+import { useAuth } from "../../hooks/auth";
 import { useNotes } from "../../hooks/notes";
 import { useTags } from "../../hooks/tags";
 
@@ -18,7 +18,7 @@ import { Footer } from "../../components/footer";
 import { Container, Main } from "./style";
 
 export function Food() {
-  const { isAdmin } = useAdmin();
+  const { isAdmin } = useAuth();
   const { searchNote, card } = useNotes();
   const { searchTags, cardTags } = useTags();
 

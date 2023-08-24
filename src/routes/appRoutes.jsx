@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
-import { useAdmin } from "../hooks/isAdmin";
+import { useAuth } from "../hooks/auth";
 
 import { Home } from "../pages/Home";
 import { Menu } from "../pages/Menu";
@@ -9,7 +9,7 @@ import { NewFood } from "../pages/NewFood";
 import { EditFood } from "../pages/EditFood";
 
 export function AppRoutes() {
-  const { isAdmin } = useAdmin();
+  const { isAdmin } = useAuth();
 
   return (
     <Routes>

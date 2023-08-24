@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import { useAdmin } from "../../hooks/isAdmin";
+import { useAuth } from "../../hooks/auth";
 
 import { PiPencilSimpleDuotone } from "react-icons/pi";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
@@ -11,7 +11,7 @@ import { Button } from "../button";
 import { Container, Span, Div } from "./style";
 
 export function Card({ img, title, description, price, ...rest }) {
-  const { isAdmin } = useAdmin();
+  const { isAdmin } = useAuth();
 
   let number = "01";
 

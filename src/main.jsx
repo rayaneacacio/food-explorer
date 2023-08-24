@@ -8,7 +8,6 @@ import GlobalStyles from './style/global';
 import { register } from "swiper/element/bundle";
 
 import { AuthProvider } from './hooks/auth';
-import { AdminProvider } from './hooks/isAdmin';
 import { NotesProvider } from './hooks/notes';
 import { TagsProvider } from './hooks/tags';
 
@@ -21,13 +20,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <AuthProvider>
-        <AdminProvider>
           <NotesProvider>
             <TagsProvider>
               <Routes />
             </TagsProvider>
           </NotesProvider>
-        </AdminProvider>
       </AuthProvider>
     </ThemeProvider>
   </React.StrictMode>,

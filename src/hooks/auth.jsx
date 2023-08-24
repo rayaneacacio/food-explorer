@@ -6,6 +6,7 @@ export const AuthContext = createContext({});
 
 function AuthProvider({ children }) {
   const [ userData, setUserData ] = useState("");
+  const [ isAdmin, setIsAdmin ] = useState(false);
 
   async function signUp({ name, email, password }) {
     try {
@@ -34,6 +35,11 @@ function AuthProvider({ children }) {
       localStorage.setItem("@foodexplorer:user", JSON.stringify(user));
       localStorage.setItem("@foodexplorer:token", JSON.stringify(token));
 
+      if(user.isAdmin == 1) {
+        setIsAdmin(true);
+        localStorage.setItem("@foodexplorer:userAdmin", JSON.stringify(true));
+      }
+
     } catch(error) {
       if(error) {
         alert(error.response.data.message);
@@ -47,22 +53,28 @@ function AuthProvider({ children }) {
     setUserData("");
     localStorage.removeItem("@foodexplorer:user");
     localStorage.removeItem("@foodexplorer:token");
+    localStorage.removeItem("@foodexplorer:userAdmin");
     localStorage.removeItem("@foodexplorer:alltags");
   }
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("@foodexplorer:user"));
     const token = JSON.parse(localStorage.getItem("@foodexplorer:token"));
+    const isAdmin = JSON.parse(localStorage.getItem("@foodexplorer:userAdmin"));
     
     if(user && token) {
       api.defaults.headers.authorization = `Bearer ${ token }`;
       setUserData({ user, token });
     }
 
+    if(isAdmin) {
+      setIsAdmin(isAdmin);
+    }
+
   }, []);
 
   return (
-    <AuthContext.Provider value ={{ signUp, signIn, signOut, userData }}>
+    <AuthContext.Provider value ={{ signUp, signIn, signOut, userData, isAdmin }}>
       { children }
     </AuthContext.Provider>
   )
