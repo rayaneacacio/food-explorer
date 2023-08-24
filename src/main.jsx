@@ -5,10 +5,16 @@ import { ThemeProvider } from 'styled-components';
 import theme from './style/theme';
 import GlobalStyles from './style/global';
 
+import { register } from "swiper/element/bundle";
+
 import { AuthProvider } from './hooks/auth';
 import { AdminProvider } from './hooks/isAdmin';
+import { NotesProvider } from './hooks/notes';
+import { TagsProvider } from './hooks/tags';
 
 import Routes from "./routes/index";
+
+register();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -16,7 +22,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <GlobalStyles />
       <AuthProvider>
         <AdminProvider>
-          <Routes />
+          <NotesProvider>
+            <TagsProvider>
+              <Routes />
+            </TagsProvider>
+          </NotesProvider>
         </AdminProvider>
       </AuthProvider>
     </ThemeProvider>
