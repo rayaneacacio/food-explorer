@@ -27,11 +27,12 @@ function AuthProvider({ children }) {
       const response = await api.post("/sessions", { email, password });
       const { user, token } = response.data;
 
-      setUserData({ user, token});
+      setUserData({ user, token });
 
       api.defaults.headers.authorization = `Bearer ${ token }`;
 
-      localStorage.setItem("@foodexplorer:userdata", JSON.stringify({ user, token }));
+      localStorage.setItem("@foodexplorer:user", JSON.stringify(user));
+      localStorage.setItem("@foodexplorer:token", JSON.stringify(token));
 
     } catch(error) {
       if(error) {
@@ -43,16 +44,19 @@ function AuthProvider({ children }) {
   }
 
   async function signOut() {
-    localStorage.removeItem("@foodexplorer:userdata");
     setUserData("");
+    localStorage.removeItem("@foodexplorer:user");
+    localStorage.removeItem("@foodexplorer:token");
+    localStorage.removeItem("@foodexplorer:alltags");
   }
 
   useEffect(() => {
-    const user = localStorage.getItem("@foodexplorer:userdata");
-
-    if(user) {
-      api.defaults.headers.authorization = `Bearer ${ user.token }`;
-      setUserData(user);
+    const user = JSON.parse(localStorage.getItem("@foodexplorer:user"));
+    const token = JSON.parse(localStorage.getItem("@foodexplorer:token"));
+    
+    if(user && token) {
+      api.defaults.headers.authorization = `Bearer ${ token }`;
+      setUserData({ user, token });
     }
 
   }, []);
