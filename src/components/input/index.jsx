@@ -12,7 +12,7 @@ export function Input({ icon, title, placeholder, $inputAuthPage = false, $texta
 
         {
           $textarea ?
-          <textarea name="" placeholder={ placeholder } id="" cols="30" rows="10"></textarea>
+          <textarea name="" placeholder={ placeholder } {...rest} id="" cols="30" rows="10"></textarea>
           :
           <input type="text" placeholder={ placeholder } {...rest} />
         }

@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import { useAuth } from "../../hooks/auth";
 import { useAdmin } from "../../hooks/isAdmin";
+import { useNotes } from "../../hooks/notes";
 
 import { GoSearch } from "react-icons/go";
 import { PiReceipt, PiSignOutLight } from "react-icons/pi";
@@ -18,6 +20,9 @@ import { Container } from "./style";
 export function Header({ menu = false }) {
   const { signOut } = useAuth();
   const { isAdmin } = useAdmin();
+  const { searchNote } = useNotes();
+
+  const [ noteTitle, setNoteTitle ] = useState();
 
   const navigate = useNavigate();
 
@@ -35,7 +40,17 @@ export function Header({ menu = false }) {
 
   async function handleSignOut() {
     await signOut();
+    navigate("/");
   }
+
+  useEffect(() => {
+    async function fetchData() {
+      await searchNote({ title: noteTitle });
+    }
+
+    fetchData();
+
+  }, [ noteTitle ]);
 
   return (
     <Container $isAdmin={ isAdmin }>
@@ -68,7 +83,7 @@ export function Header({ menu = false }) {
           }
         
           <div id="input">
-            <Input icon={ <GoSearch /> } placeholder="Busque por pratos ou ingredientes" />
+            <Input icon={ <GoSearch /> } placeholder="Busque por pratos ou ingredientes" onChange={e => setNoteTitle(e.target.value)} />
           </div>
 
           {

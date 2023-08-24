@@ -10,7 +10,7 @@ import { Button } from "../button";
 
 import { Container, Span, Div } from "./style";
 
-export function Card({ img, title, price, ...rest }) {
+export function Card({ img, title, description, price, ...rest }) {
   const { isAdmin } = useAdmin();
 
   let number = "01";
@@ -18,11 +18,11 @@ export function Card({ img, title, price, ...rest }) {
   const navigate = useNavigate();
 
   function navigateToFood() {
-    navigate("/food");
+    navigate(`/food/${ title }`);
   }
 
   function navigateEditFood() {
-    navigate("/edit-food");
+    navigate(`/edit-food/${ title }`);
   }
 
   return (
@@ -34,11 +34,11 @@ export function Card({ img, title, price, ...rest }) {
         <HeartButton id="heartButton" />
       }
 
-      <img src={ img } alt={ `imagem de ${title}` } />
+      <img src={ img } alt={ `imagem de ${ title }` } />
 
       <button id="titleButton" onClick={ navigateToFood }> {` ${ title } >`} </button>
 
-      <p>Massa fresca com camarões e pesto.</p>
+      <p> { description } </p>
 
       <span id="price"> R$ { price } </span>
 

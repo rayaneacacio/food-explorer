@@ -18,6 +18,8 @@ export const Container = styled.div`
     font-weight: 700;
     line-height: normal;
 
+    width: ${({ $logoAuthPage }) => $logoAuthPage && "25.5rem"};
+
     opacity: ${({ $logoAuthPage }) => $logoAuthPage ? "0" : "1"};
     transform: translateX( ${({ $logoAuthPage }) => $logoAuthPage && "-5rem"} );
 
