@@ -51,6 +51,10 @@ export const Form = styled.div`
   flex-direction: column;
   gap: 2.4rem;
 
+  opacity: 0;
+
+  animation: slide 0.3s forwards;
+
   .buttons {
     display: flex;
     gap: 3.2rem;

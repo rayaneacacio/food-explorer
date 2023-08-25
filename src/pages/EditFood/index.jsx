@@ -12,15 +12,17 @@ import { Input } from "../../components/input";
 import { InputEditTag } from "../../components/inputEditTag";
 import { Button } from "../../components/button";
 import { Footer } from "../../components/footer";
+import { EditFoodSkeleton } from "../../components/EditFoodSkeleton";
 
 import { Container, Main, Form, InputFile, Select } from "./style";
 
 export function EditFood() {
   const { searchNote, updateNote, updateImg, removeNote, card } = useNotes();
-  const { searchTags, deleteAllTags, insertTags } = useTags();
+  const { searchTags, deleteAllTags, insertTags, tagsStorage, localTags } = useTags();
 
   const { title } = useParams();
 
+  const [ loading, setLoading ] = useState(true);
   const [ image, setImage ] = useState("");
   const [ name, setName ] = useState("");
   const [ category, setCategory ] = useState("");
@@ -69,12 +71,14 @@ export function EditFood() {
 
   useEffect(() => {
     async function fetchData() {
-      await searchNote({ title });
-      await searchTags({ note_id: card.id });
+      const { firstNote } = await searchNote({ title });
+      const tags = await searchTags({ note_id: firstNote.id });
+      await tagsStorage({ tags });
     }
 
     fetchData();
     handleDefaultValues();
+    setLoading(false);
 
   }, []);
 
@@ -87,39 +91,44 @@ export function EditFood() {
 
         <h1>Editar Prato</h1>
 
-        <Form>
-          <InputFile>
-            <span>Selecione imagem para alterá-la</span>
-            <label htmlFor="image">
-              <FiUpload />
-              Selecione imagem
-              <input id="image" type="file" onChange={ event => changeImage(event) } />
-            </label>
-          </InputFile>
+        {
+          loading ? 
+          <EditFoodSkeleton />
+          :
+          <Form>
+            <InputFile>
+              <span>Selecione imagem para alterá-la</span>
+              <label htmlFor="image">
+                <FiUpload />
+                Selecione imagem
+                <input id="image" type="file" onChange={ event => changeImage(event) } />
+              </label>
+            </InputFile>
           
-          <Input title="Nome" placeholder="Ex.: Salada Ceasar" $saveOrEditFood defaultValue={ card.title } onChange={e => setName(e.target.value)} />
+            <Input title="Nome" placeholder="Ex.: Salada Ceasar" $saveOrEditFood defaultValue={ card.title } onChange={e => setName(e.target.value)} />
 
-          <Select>
-            <label htmlFor="categoria"> Categoria </label>
-            <select id="categoria" onChange={e => setCategory(e.target.value)}>
-              <option value="refeição"> Refeição </option>
-              <option value="sobremesa"> Sobremesa </option>
-              <option value="bebida"> Bebida </option>
-            </select>
-          </Select>
+            <Select>
+              <label htmlFor="categoria"> Categoria </label>
+              <select id="categoria" onChange={e => setCategory(e.target.value)}>
+                <option value="refeição"> Refeição </option>
+                <option value="sobremesa"> Sobremesa </option>
+                <option value="bebida"> Bebida </option>
+              </select>
+            </Select>
 
-          <InputEditTag />
+            <InputEditTag />
 
-          <Input title="Preço" placeholder="R$ 00,00" type="number" $saveOrEditFood defaultValue={ card.price } onChange={e => setPrice(e.target.value)} />
+            <Input title="Preço" placeholder="R$ 00,00" type="number" $saveOrEditFood defaultValue={ card.price } onChange={e => setPrice(e.target.value)} />
 
-          <Input title="Descrição" placeholder="A Salada César é uma opção refrescante para o verão." $textarea $saveOrEditFood defaultValue={ card.description } onChange={e => setDescription(e.target.value)} />
+            <Input title="Descrição" placeholder="A Salada César é uma opção refrescante para o verão." $textarea $saveOrEditFood defaultValue={ card.description } onChange={e => setDescription(e.target.value)} />
 
-          <div className="buttons">
-            <Button title="Excluir prato" $buttonRemove onClick={event => handleDeleteCard(event) } />
-            <Button title="Salvar alterações" $buttonSave onClick={event => handleUpdateCard(event) } />
-          </div>
+            <div className="buttons">
+              <Button title="Excluir prato" $buttonRemove onClick={event => handleDeleteCard(event) } />
+              <Button title="Salvar alterações" $buttonSave onClick={event => handleUpdateCard(event) } />
+            </div>
           
-        </Form>
+          </Form>
+        }
         
         <Footer />
       </Main>
