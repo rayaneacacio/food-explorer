@@ -8,6 +8,21 @@ Desenvolvido com o objetivo de proporcionar uma experiência interativa e fácil
 
 ## Demonstração
 
+<h1 align="center">
+  <img src=".github/signin.gif" />
+</h1>
+
+<h1 align="center">
+  <img src=".github/search-food.gif" />
+</h1>
+
+<h1 align="center">
+  <img src=".github/edit-food.gif" />
+</h1>
+
+<h1 align="center">
+  <img src=".github/new-food.gif" />
+</h1>
 
 ## Funcionalidades
 
