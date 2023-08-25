@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { useNotes } from "../../hooks/notes";
 import { useTags } from "../../hooks/tags";
@@ -24,6 +25,8 @@ export function NewFood() {
   const [ price, setPrice ] = useState("");
   const [ description, setDescription ] = useState("");
 
+  const navigate = useNavigate();
+
   async function handleSave(event) {
     event.preventDefault();
 
@@ -43,6 +46,7 @@ export function NewFood() {
     
     clearPage();
     alert("O prato foi salvo");
+    navigate("/");
   }
 
   function changeImage(event) {
