@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 83.7rem;
-  
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
@@ -14,5 +12,9 @@ export const Container = styled.div`
 
     display: flex;
     flex-wrap: wrap;
+  }
+
+  @media(min-width: 1000px) {
+    width: 83.7rem;
   }
 `;
