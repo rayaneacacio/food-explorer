@@ -60,6 +60,10 @@ export const Container = styled.div`
 export const Section = styled.section`
   margin-bottom: 2.4rem;
 
+  opacity: 0;
+
+  animation: slide 0.3s forwards;
+
   > h2 {
     margin-left: 2.4rem;
   }

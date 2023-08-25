@@ -12,13 +12,15 @@ import { Header } from "../../components/header";
 import { Banner } from "../../components/banner";
 import { Card } from "../../components/card";
 import { Footer } from "../../components/footer";
+import { HomeSkeleton } from "../../components/homeSkeleton";
 
 import { Container, Section } from "./style";
 
 export function Home() {
-  const { viewNotes, splitNotes, refeicoes, sobremesas, bebidas } = useNotes();
+  const { viewNotes, splitNotes, clearNoteStorage, refeicoes, sobremesas, bebidas } = useNotes();
   const { clearTagsStorage } = useTags();
 
+  const [ loading, setLoading ] = useState(true);
   const [ sliderPerView, setSliderPerview ] = useState(3.3);
 
   function handleResize() {
@@ -33,14 +35,24 @@ export function Home() {
     }
   }
 
+  function pathSections() {
+    const allSections = document.querySelectorAll("section");
+    window.scroll({
+      top: (allSections[0].offsetTop),
+      behavior: "smooth",
+    });
+  }
+
   useEffect(() => {
     async function fetchData() {
       clearTagsStorage();
+      clearNoteStorage();
       await viewNotes();
       await splitNotes();
     }
     
-    fetchData();
+    fetchData();   
+    setLoading(false);
 
     handleResize();
 
@@ -53,8 +65,12 @@ export function Home() {
   }, []);
 
   return (
+    <>
+    { loading ?
+    <HomeSkeleton />
+    :
     <Container>
-      <Header />
+      <Header onFocus={ pathSections } />
 
       <main>
         <Banner />
@@ -113,7 +129,8 @@ export function Home() {
         <Footer />
 
       </main>
-      
     </Container>
+    }
+    </>
   )
 }
