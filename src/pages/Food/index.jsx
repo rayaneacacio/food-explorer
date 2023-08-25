@@ -14,8 +14,9 @@ import { BackButton } from "../../components/backButton";
 import { Tag } from "../../components/tag";
 import { Button } from "../../components/button";
 import { Footer } from "../../components/footer";
+import { FoodSkeleton } from "../../components/foodSkeleton";
 
-import { Container, Main } from "./style";
+import { Container, Div, Main } from "./style";
 
 export function Food() {
   const { isAdmin } = useAuth();
@@ -27,6 +28,7 @@ export function Food() {
   const { title } = useParams();
 
   const [ quantityOfItems, setQuantityOfItems ] = useState("01");
+  const [ loading, setLoading ] = useState(true);
 
   function navigateToEditFood() {
     navigate(`/edit-food/${ title }`);
@@ -70,11 +72,12 @@ export function Food() {
 
   useEffect(() => {
     async function fetchData() {
-      await searchNote({ title });
-      await searchTags({ note_id: card.id });
+      const { firstNote } = await searchNote({ title });
+      await searchTags({ note_id: firstNote.id });
     }
 
     fetchData();
+    setLoading(false);
 
   }, []);
 
@@ -85,45 +88,52 @@ export function Food() {
       <Main>
         <BackButton />
 
-        <img src={`${ api.defaults.baseURL}/files/${ card.image }`} alt={ `foto de ${ card.title }` } />
-
-        <div className="description">
-          <h1> { card.title } </h1>
-
-          <p> { card.description } </p>
-
-          <div>
-            {
-              cardTags &&
-              cardTags.map(tag => (
-                <Tag key={ String(tag.id) } title={ tag.title } />
-              ))
-            }
-          </div>
-        </div>
-
-        { 
-          isAdmin ?
-          <div className="buttonEdit">
-            <Button title="Editar prato" $buttonWithBackground onClick={ navigateToEditFood } />
-          </div>
+        {
+          loading ?
+          <FoodSkeleton />
           :
-          <div className="values">
-            <span>
-              <button onClick={ reduce1 }> <AiOutlineMinus /> </button>
-              { quantityOfItems }
-              <button onClick={ add1 }> <AiOutlinePlus /> </button>
-            </span>
+          <Div>
+            <img className="img" src={`${ api.defaults.baseURL}/files/${ card.image }`} alt={ `foto de ${ card.title }` } />
 
-            <div>
-              <Button icon={ <PiReceipt /> } title={`pedir ∙ R$ ${ card.price }`} $buttonWithBackground />
+            <div className="description">
+              <h1> { card.title } </h1>
+
+              <p> { card.description } </p>
+
+              <div>
+                {
+                  cardTags &&
+                  cardTags.map(tag => (
+                    <Tag key={ String(tag.id) } title={ tag.title } />
+                  ))
+                }
+              </div>
             </div>
-          </div>
+
+            { 
+              isAdmin ?
+              <div className="buttonEdit">
+                <Button title="Editar prato" $buttonWithBackground onClick={ navigateToEditFood } />
+              </div>
+              :
+              <div className="values">
+                <span>
+                  <button onClick={ reduce1 }> <AiOutlineMinus /> </button>
+                  { quantityOfItems }
+                  <button onClick={ add1 }> <AiOutlinePlus /> </button>
+                </span>
+
+                <div>
+                  <Button className="buttonBuy" icon={ <PiReceipt /> } title={`pedir ∙ R$ ${ card.price }`} $buttonWithBackground />
+                </div>
+              </div>
+            }
+          </Div>
         }
 
         <Footer />
+        </Main>
 
-      </Main>
     </Container>
   )
 }

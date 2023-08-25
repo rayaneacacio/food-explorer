@@ -26,6 +26,7 @@ export const Main = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 4.2rem;
   
   &::-webkit-scrollbar {
     display: none;
@@ -36,7 +37,7 @@ export const Main = styled.div`
     align-self: flex-start;
   }
 
-  > img {
+  .img {
     width: 26.4rem;
     height: 26.4rem;
 
@@ -99,27 +100,37 @@ export const Main = styled.div`
       }
     }
 
-    > div {
-      width: 18.8rem;
+    .buttonBuy {
+      padding: 1.2rem 2.4rem;
     }
   }
 
   @media(min-width: 1000px) {
     padding-top: 12.8rem;
 
-    display: grid;
-    grid-template-areas: "button null" "img description" "img values" "footer footer";
-    grid-template-columns: 51.1rem 1fr;
-    align-items: end;
-    gap: 0 4.783rem;
-
     > :first-child { 
       width: 10.6rem;
       margin-left: 12.2rem;
       grid-area: button;
     }
+  }
+`;
 
-    > img {
+export const Div = styled.div`
+  height: 100%;
+
+  opacity: 0;
+
+  animation: slide 0.3s forwards;
+
+  @media(min-width: 1000px) {
+    display: grid;
+    grid-template-areas: "button null" "img description" "img values" "footer footer";
+    grid-template-columns: 51.1rem 1fr;
+    align-items: start;
+    gap: 0 4.783rem;
+
+    .img {
       width: 39rem;
       height: 38.9rem;
 
