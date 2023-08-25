@@ -12,7 +12,7 @@ import { Input } from "../../components/input";
 import { InputEditTag } from "../../components/inputEditTag";
 import { Button } from "../../components/button";
 import { Footer } from "../../components/footer";
-import { EditFoodSkeleton } from "../../components/EditFoodSkeleton";
+import { EditFoodSkeleton } from "../../components/editFoodSkeleton";
 
 import { Container, Main, Form, InputFile, Select } from "./style";
 
