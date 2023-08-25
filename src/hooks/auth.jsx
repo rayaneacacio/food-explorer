@@ -38,6 +38,8 @@ function AuthProvider({ children }) {
       if(user.isAdmin == 1) {
         setIsAdmin(true);
         localStorage.setItem("@foodexplorer:userAdmin", JSON.stringify(true));
+      } else {
+        setIsAdmin(false);
       }
 
     } catch(error) {
