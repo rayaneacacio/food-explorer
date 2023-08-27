@@ -36,6 +36,11 @@ React, Axios, Styled-Components, Swiper
 ## Deploy
 
 https://sparkly-pavlova-9f4ab9.netlify.app/
+<p>
+  email de administrador: loki@gmail.com
+  <br>
+  senha: 1234
+</p>
 
 ## Documentação de cores
 
